@@ -1,9 +1,18 @@
 require("dotenv").config();
 
-let bodyParser = require("body-parser");
 let express = require('express');
 let app = express();
 
+let bodyParser = require("body-parser");
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.post("/name", (req, res) => {
+
+    var string = req.body.first + " " + req.body.last;
+
+    res.json({name: string});
+});
 
 //const absPath = __dirname + "/views/index.html";
 //console.log("Hello World");
@@ -48,14 +57,7 @@ let app = express();
 //     res.json("{name: `${first} ${last}`}");
 // });
 
-// app.use(bodyParser.urlencoded({extended: false}));
-// app.use(bodyParser.json());
-// app.post("/name", (req, res) => {
 
-//     var string = req.body.first + " " + req.body.last;
-
-//     res.json({name: string});
-// });
 
 
 
